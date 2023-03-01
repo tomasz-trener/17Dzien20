@@ -14,6 +14,9 @@ namespace P03AplikacjaPogodaClientAPI.ViewModels.ProductViewModel
     {
         public ObservableCollection<ProductVM> Products { get; set; }
 
+        public ObservableCollection<ProductVM> FilteredProducts { get; set; }
+
+
         private bool speaking = false;
         public bool Speaking { get => speaking;
             set
@@ -44,6 +47,7 @@ namespace P03AplikacjaPogodaClientAPI.ViewModels.ProductViewModel
         ProductsApiTool productsApiTool;
         public ProdcutWindowVM(ProductsApiTool productsApiTool)
         {
+
             this.productsApiTool = productsApiTool;
 
             Products = new ObservableCollection<ProductVM>();
@@ -52,8 +56,7 @@ namespace P03AplikacjaPogodaClientAPI.ViewModels.ProductViewModel
             EditCommand = new DelegateCommand(EditProduct, null);
             DeleteCommand = new DelegateCommand(DeleteProduct, null);
             CreateCommand = new DelegateCommand(CreateProduct, null);
-            SpeakCommand = new DelegateCommand(SpeakProductDescription, null);
-            
+            SpeakCommand = new DelegateCommand(SpeakProductDescription, null);    
         }
 
         private async void SpeakProductDescription()
@@ -81,6 +84,19 @@ namespace P03AplikacjaPogodaClientAPI.ViewModels.ProductViewModel
             };
             await productsApiTool.CreateProduct(productToCreate);
             GetPoducts();
+        }
+
+
+        public async void SearchProducts(string productTitle)
+        {
+            var filteredProducts = Products.Where(x => x.Title == productTitle).ToArray();
+            FilteredProducts.Clear();
+            foreach (var p in filteredProducts)
+            {
+                FilteredProducts.Add(p);
+            }
+
+            Products = FilteredProducts;
         }
 
         public async void DeleteProduct()

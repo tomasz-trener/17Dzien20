@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using Microsoft.OpenApi.Any;
 using P05Sklep.Shared;
 using P06Sklep.DataSeeder;
@@ -7,6 +8,11 @@ namespace P04Sklep.API.Data
 {
     public class DataContext : DbContext
     {
+        public DataContext()
+        {
+            
+        }
+
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
 

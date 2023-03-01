@@ -114,7 +114,7 @@ namespace P04Sklep.API.Services.AuthService
             }
         }
 
-        private string createToken(User user)
+        public string createToken(User user)
         {
             List<Claim> claims = new List<Claim>()
             {
