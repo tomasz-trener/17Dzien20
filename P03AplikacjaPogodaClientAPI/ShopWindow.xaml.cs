@@ -25,10 +25,10 @@ namespace P03AplikacjaPogodaClientAPI
     /// </summary>
     public partial class ShopWindow : Window
     {
-        public ShopWindow()
+        public ShopWindow(ProdcutWindowVM prodcutWindowVM)
         {
             InitializeComponent();
-            shopPanel.DataContext = new ProdcutWindowVM();
+            shopPanel.DataContext = prodcutWindowVM;
         }
 
         private async void btnShopApiTest_Click(object sender, RoutedEventArgs e)

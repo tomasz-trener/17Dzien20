@@ -43,7 +43,7 @@ namespace P03AplikacjaPogodaClientAPI
 
         public static void ShowShopWindow()
         {
-            new ShopWindow().Show();
+          //  new ShopWindow().Show();
         }
        
     }

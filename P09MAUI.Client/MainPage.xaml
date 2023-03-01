@@ -12,7 +12,7 @@
         </Grid.RowDefinitions>
 
         <Border  Grid.ColumnSpan="2" Background="BurlyWood">
-            <HorizontalStackLayout    >
+            <HorizontalStackLayout>
                 <Image VerticalOptions="Center" Source="logo.png" WidthRequest="110" ></Image>
                 <Label Margin="0, 0, 0, 10" VerticalTextAlignment="Center" FontSize="50" Text="Super Weather Shop"></Label>
             </HorizontalStackLayout>

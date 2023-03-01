@@ -14,7 +14,7 @@ using System.Windows;
 
 namespace P03AplikacjaPogodaClientAPI.Tools
 {
-    internal class ProductsApiTool
+    public class ProductsApiTool
     {
         private string _baseURl;
         public ProductsApiTool()

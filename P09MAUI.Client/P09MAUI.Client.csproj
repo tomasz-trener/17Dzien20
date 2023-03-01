@@ -67,7 +67,7 @@
 
 	<ItemGroup>
 	  <Resource Include="Resources\Images\logo.png">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	</ItemGroup>
 

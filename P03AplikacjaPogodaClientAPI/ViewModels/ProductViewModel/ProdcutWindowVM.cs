@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace P03AplikacjaPogodaClientAPI.ViewModels.ProductViewModel
 {
-    internal class ProdcutWindowVM : ViewModelBase
+    public class ProdcutWindowVM : ViewModelBase
     {
         public ObservableCollection<ProductVM> Products { get; set; }
 
@@ -41,9 +41,11 @@ namespace P03AplikacjaPogodaClientAPI.ViewModels.ProductViewModel
                 OnPropertyChange();
             }
         }
-
-        public ProdcutWindowVM()
+        ProductsApiTool productsApiTool;
+        public ProdcutWindowVM(ProductsApiTool productsApiTool)
         {
+            this.productsApiTool = productsApiTool;
+
             Products = new ObservableCollection<ProductVM>();
             GetPoducts();
 
@@ -51,6 +53,7 @@ namespace P03AplikacjaPogodaClientAPI.ViewModels.ProductViewModel
             DeleteCommand = new DelegateCommand(DeleteProduct, null);
             CreateCommand = new DelegateCommand(CreateProduct, null);
             SpeakCommand = new DelegateCommand(SpeakProductDescription, null);
+            
         }
 
         private async void SpeakProductDescription()
@@ -66,7 +69,7 @@ namespace P03AplikacjaPogodaClientAPI.ViewModels.ProductViewModel
 
         public async void CreateProduct()
         {
-            ProductsApiTool productsApiTool = new ProductsApiTool();
+          //  ProductsApiTool productsApiTool = new ProductsApiTool();
 
             var productToCreate = new Product()
             {
@@ -82,7 +85,7 @@ namespace P03AplikacjaPogodaClientAPI.ViewModels.ProductViewModel
 
         public async void DeleteProduct()
         {
-            ProductsApiTool productsApiTool = new ProductsApiTool();
+       //     ProductsApiTool productsApiTool = new ProductsApiTool();
 
             await productsApiTool.DeleteProduct(selectedProduct.Id);
             
@@ -92,7 +95,7 @@ namespace P03AplikacjaPogodaClientAPI.ViewModels.ProductViewModel
 
         public async void EditProduct()
         {
-            ProductsApiTool productsApiTool = new ProductsApiTool();
+       //     ProductsApiTool productsApiTool = new ProductsApiTool();
 
             var productToUpdate = new Product()
             {
@@ -108,7 +111,7 @@ namespace P03AplikacjaPogodaClientAPI.ViewModels.ProductViewModel
 
         private async void GetPoducts()
         {
-            ProductsApiTool productsApiTool = new ProductsApiTool();
+       //     ProductsApiTool productsApiTool = new ProductsApiTool();
             var products = await productsApiTool.GetProducts();
 
             Products.Clear();
