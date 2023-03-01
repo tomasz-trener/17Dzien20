@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="P09MAUI.Client.MainPage">
+             x:Class="P09MAUI.Client.MainPage"
+             xmlns:vm="clr-namespace:P09MAUI.Client.ViewModels.ProductViewModel"
+             >
 
     <Grid ColumnDefinitions="3*, 2*">
         <Grid.RowDefinitions>
@@ -9,17 +11,16 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-
-        <Border Background="BurlyWood">
+        <Border  Grid.ColumnSpan="2" Background="BurlyWood">
             <HorizontalStackLayout    >
-                <Image VerticalOptions="Center" Source="logo.png" Width="110" ></Image>
-                <Label VerticalTextAlignment="Center" FontSize="50" Text="Super Weather Shop"></Label>
+                <Image VerticalOptions="Center" Source="logo.png" WidthRequest="110" ></Image>
+                <Label Margin="0, 0, 0, 10" VerticalTextAlignment="Center" FontSize="50" Text="Super Weather Shop"></Label>
             </HorizontalStackLayout>
         </Border>
 
-        <CollectionView SelectionMode="Single" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}">
+        <CollectionView Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="vm:ProductVM">
 
                     <Grid Background="Aqua">
                         <Grid.ColumnDefinitions>
@@ -34,10 +35,10 @@
                             </Grid.RowDefinitions>
 
 
-                            <Label  x:Name="productTitle" Text="example product" ></Label>
-                            <Label Grid.Row="1" x:Name="productDescription"  Text="example description" ></Label>
+                            <Label    x:Name="productTitle" Text="{Binding Title}" ></Label>
+                            <Label Grid.Row="1" x:Name="productDescription"  Text="{Binding Description}" ></Label>
                         </Grid>
-                        <Image  Grid.Column="1" Source="{Binding ImageUrl, Converter={StaticResource imageUrlToBitmapConv}}" Width="60" Height="60"></Image>
+                        <Image  Grid.Column="1" Source="{Binding ImageUrl}" WidthRequest="60" HeightRequest="60"></Image>
                     </Grid>
 
                 </DataTemplate>
@@ -48,6 +49,21 @@
 
         </CollectionView>
 
+        <VerticalStackLayout Grid.Row="1" Grid.Column="1" >
+            <Label Text="Title"></Label>
+            <Entry Text="{Binding SelectedProduct.Title, Mode=TwoWay}"></Entry>
+            <Label Text="Description"></Label>
+
+            <Entry Text="{Binding SelectedProduct.Description, Mode=TwoWay}"></Entry>
+
+            <Label Text="Color"></Label>
+            <Entry  Text="{Binding SelectedProduct.Color, Mode=TwoWay}"></Entry>
+            <Label Text="Image url"></Label>
+            <Entry Text="{Binding SelectedProduct.ImageUrl, Mode=TwoWay}"></Entry>
+            <Button Command="{Binding EditCommand}" Text="Save"></Button>
+            <Button Command="{Binding DeleteCommand}" Text="Delete"></Button>
+            <Button Command="{Binding CreateCommand}" Text="Create"></Button>
+        </VerticalStackLayout>
     </Grid>
     
     

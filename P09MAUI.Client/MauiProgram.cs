@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using P09MAUI.Client.Tools;
+using P09MAUI.Client.ViewModels.ProductViewModel;
 
 namespace P09MAUI.Client
 {
@@ -18,6 +20,10 @@ namespace P09MAUI.Client
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddSingleton<ProductsApiTool>();
+            builder.Services.AddSingleton<ProdcutWindowVM>();
+            builder.Services.AddSingleton<MainPage>();
 
             return builder.Build();
         }
