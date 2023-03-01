@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="P09MAUI.Client.MainPage">
+
+    <Grid ColumnDefinitions="3*, 2*">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <Border Background="BurlyWood">
+            <HorizontalStackLayout    >
+                <Image VerticalOptions="Center" Source="logo.png" Width="110" ></Image>
+                <Label VerticalTextAlignment="Center" FontSize="50" Text="Super Weather Shop"></Label>
+            </HorizontalStackLayout>
+        </Border>
+
+        <CollectionView SelectionMode="Single" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid Background="Aqua">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="60"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+
+                            <Label  x:Name="productTitle" Text="example product" ></Label>
+                            <Label Grid.Row="1" x:Name="productDescription"  Text="example description" ></Label>
+                        </Grid>
+                        <Image  Grid.Column="1" Source="{Binding ImageUrl, Converter={StaticResource imageUrlToBitmapConv}}" Width="60" Height="60"></Image>
+                    </Grid>
+
+                </DataTemplate>
+                
+                
+            </CollectionView.ItemTemplate>
+
+
+        </CollectionView>
+
+    </Grid>
+    
+    
+
+</ContentPage>
