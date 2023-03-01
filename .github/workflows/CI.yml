@@ -18,7 +18,7 @@ jobs:
       - name: Restore dependences 
         run: dotnet restore P04Sklep.API/P04Sklep.API.csproj
       - name: build
-        run: dotnet buid P04Sklep.API/P04Sklep.API.csproj
+        run: dotnet build P04Sklep.API/P04Sklep.API.csproj
       - name: Test
         run: dotnet test P12SklepAPI.Test/P12SklepAPI.Test.csproj
         
