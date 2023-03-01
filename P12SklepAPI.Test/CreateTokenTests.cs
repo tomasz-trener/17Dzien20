@@ -55,7 +55,7 @@ namespace P12SklepAPI.Test
 
         [Theory]
         [InlineData(1,"jan@wp.pl","admin","2023-01-01", "my top secret key")]
-        [InlineData(2, "jan2@wp.pl", "custom", "2023-01-01", "my top secret key")]
+        [InlineData(2, "jan2@wp.pl", "admin", "2023-01-01", "my top secret key")]
         [InlineData(3, "jan2@wp.pl", "admin", "2023-01-01", "my top secret key2")]
         public void CreateToken_ShouldReturnVaildJwtTokenParamaters(
             int id, string email, string role, string date, string tokenKey
